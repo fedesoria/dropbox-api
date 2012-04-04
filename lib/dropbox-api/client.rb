@@ -21,8 +21,8 @@ module Dropbox
         ls(filename).first
       end
 
-      def direct_url_for_path(path)
-        response = raw.media({ :path => path })
+      def direct_url_for_path(path, options = {})
+        response = raw.media({ :path => path }.merge(options))
         Dropbox::API::Object.init(response, self)
       end
 
