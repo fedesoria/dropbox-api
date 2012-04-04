@@ -26,6 +26,11 @@ module Dropbox
         Dropbox::API::Object.init(response, self)
       end
 
+      def share_url_for_path(path, options = {})
+        response = raw.shares({ :path => path }.merge(options))
+        Dropbox::API::Object.init(response, self)
+      end
+      
       def ls(path = '')
         Dropbox::API::Dir.init({'path' => path}, self).ls
       end
