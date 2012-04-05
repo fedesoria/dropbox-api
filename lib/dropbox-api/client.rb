@@ -31,6 +31,10 @@ module Dropbox
         Dropbox::API::Object.init(response, self)
       end
       
+      def thumbnail_for_path(path, options = {})
+        raw.thumbnails({ :path => path }.merge(options))
+      end
+      
       def ls(path = '')
         Dropbox::API::Dir.init({'path' => path}, self).ls
       end
